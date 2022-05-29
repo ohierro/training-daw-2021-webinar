@@ -29,14 +29,21 @@ class API {
     return 0
   }
 
+  async getPostsWithWordCount() {
+    // debe devolver una estructura de posts a la que añadimos la
+    // cuenta de palabras que tiene el body
+    return 0
+  }
+
   async startWithSameLetter() {
+    // debe devolver aquellos posts en los que el título y el body
+    // empiecen por la misma letra
     return 0
   }
 }
 
 async function main() {
   let api = new API('https://jsonplaceholder.typicode.com')
-
 
   let data = await api.getTrue()
   assert.strictEqual(data, true)
@@ -56,6 +63,13 @@ async function main() {
   data = await api.countPostsByUser(2)
   assert.strictEqual(data, 10)
   // console.log(`total posts of user 1 ${data}`)
+
+  data = await api.getPostsWithWordCount()
+  assert.strictEqual(data[0].totalWords, 20)
+  assert.strictEqual(data[1].totalWords, 28)
+  // for (let post of data) {
+  //   console.log(`post ${JSON.stringify(post)}`)
+  // }
 
   data = await api.startWithSameLetter()
   assert.strictEqual(data.length, 8)
