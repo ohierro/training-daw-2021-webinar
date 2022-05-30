@@ -15,7 +15,9 @@ export default class API {
   }
 
   async doLike(idPost) {
-    let result = await fetch(`${this.url}/${idPost}/like`,
+    const apiEndpoint = `${this.url}/posts`
+
+    let result = await fetch(apiEndpoint,
     {
       method: 'POST',
       headers: {
